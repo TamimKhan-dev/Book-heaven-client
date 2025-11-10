@@ -15,7 +15,7 @@ const Footer = () => {
             </div>
 
             <div className="">
-              <h3 className="text-xl">Social Links</h3>
+              <h3 className="text-xl font-bold">Social Links</h3>
               <div className="flex gap-2 mt-2">
                 <FaSquareXTwitter style={{ fontSize: "30px" }} />
                 <FaLinkedin style={{ fontSize: "30px" }} />
