@@ -26,31 +26,33 @@ const Footer = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-40">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Services</h3>
-              <ul className="text-md font-normal">
-                <li>Branding</li>
-                <li>Design</li>
-                <li>Marketing</li>
-                <li>Advertisement</li>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Services</h3>
+              <ul className="text-md font-normal text-gray-600">
+                <li>Help Center</li>
+                <li>Returns</li>
+                <li>Product Recalls</li>
+                <li>Contact Us</li>
+                <li>Store Pickup</li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Company</h3>
-              <ul className="text-md font-normal">
-                <li>Contact</li>
-                <li>Jobs</li>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Explore</h3>
+              <ul className="text-md font-normal text-gray-600">
                 <li>About us</li>
-                <li>Press kit</li>
+                <li>Sitemap</li>
+                <li>Bookmarks</li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Legal</h3>
-              <ul className="text-md font-normal">
-                <li>Terms of use</li>
-                <li>Privacy policy</li>
-                <li>Cookie policy</li>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Categories</h3>
+              <ul className="text-md font-normal text-gray-600">
+                <li>Action</li>
+                <li>Comedy</li>
+                <li>Drama</li>
+                <li>Horror</li>
+                <li>Kids</li>
               </ul>
             </div>
           </div>
