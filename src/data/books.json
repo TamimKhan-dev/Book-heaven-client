@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "title": "Echoes of Eternity",
+    "genre": "Fantasy",
+    "image": "https://i.ibb.co.com/ZzDQ5K3B/Echoes-of-Eternity.jpg",
+    "rating": 4.7,
+    "price": 18.99,
+    "author_name": "Hal M. Helms"
+  },
+  {
+    "id": "2",
+    "title": "The Quantum Paradox",
+    "genre": "Science Fiction",
+    "image": "https://i.ibb.co.com/Kjmhkhnz/The-Quantum-Paradox.jpg",
+    "rating": 4.5,
+    "price": 22.50,
+    "author_name": "Oliver Grey"
+  },
+  {
+    "id": "3",
+    "title": "Whispers in the Fog",
+    "genre": "Mystery",
+    "image": "https://i.ibb.co.com/TxbhQrgs/Whispers-in-the-Fog.jpg",
+    "rating": 4.3,
+    "price": 15.75,
+    "author_name": "E M Wallis"
+  },
+  {
+    "id": "4",
+    "title": "The Art of Stillness",
+    "genre": "Self-Help",
+    "image": "https://i.ibb.co.com/M5JQ1CkM/The-Art-of-Stillness.jpg",
+    "rating": 4.8,
+    "price": 19.20,
+    "author_name": "Pico Iyer"
+  },
+  {
+    "id": "5",
+    "title": "The Last Sonata",
+    "genre": "Romance",
+    "image": "https://i.ibb.co.com/8Dw6sNNL/The-Last-Sonata.jpg",
+    "rating": 4.6,
+    "price": 16.40,
+    "author_name": "Maya Daniels"
+  },
+  {
+    "id": "6",
+    "title": "Pegasus: Rise of the Titans",
+    "genre": "Action & Adventure",
+    "image": "https://i.ibb.co.com/HfsZBs5q/Rise-of-the-Titans.jpg",
+    "rating": 4.4,
+    "price": 21.99,
+    "author_name": "Kate O'Hearn"
+  },
+    {
+    "id": "7",
+    "title": "The Hidden Garden",
+    "genre": "Historical Fiction",
+    "image": "https://i.ibb.co.com/wZgV4zg1/The-Hidden-Garden.jpg",
+    "rating": 4.5,
+    "price": 17.30,
+    "author_name": "Jane G. Meyer"
+  },
+  {
+    "id": "8",
+    "title": "Fragments of Tomorrow",
+    "genre": "Dystopian",
+    "image": "https://i.ibb.co.com/HDb3djHf/30328809.jpg",
+    "rating": 4.6,
+    "price": 20.10,
+    "author_name": "Jim Hawkins"
+  },
+  {
+    "id": "9",
+    "title": "Cooking with Fire & Soul",
+    "genre": "Culinary / Lifestyle",
+    "image": "https://i.ibb.co.com/TMwtTmrC/Cooking-with-Fire-Soul.jpg",
+    "rating": 4.9,
+    "price": 24.99,
+    "author_name": "Craig Tabor"
+  }
+]
