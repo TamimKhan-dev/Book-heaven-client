@@ -8,9 +8,9 @@ const Navbar = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive
-            ? "cursor-pointer flex items-center fill-lime-400 bg-lime-950 hover:bg-lime-900 rounded-md duration-100 text-lime-400"
-            : ""
+          `cursor-pointer border-b-2 border-transparent duration-100 hover:text-blue-500 hover:border-blue-500 ${
+            isActive ? "text-blue-500 border-gray-500" : ""
+          }`
         }
       >
         <span className="p-2 font-semibold">Home</span>
@@ -18,9 +18,9 @@ const Navbar = () => {
       <NavLink
         to="/all-books"
         className={({ isActive }) =>
-          isActive
-            ? "cursor-pointer flex items-center fill-lime-400 bg-lime-950 hover:bg-lime-900 rounded-md duration-100 text-lime-400"
-            : ""
+          `cursor-pointer border-b-2 border-transparent duration-100 hover:text-blue-500 hover:border-blue-500 ${
+            isActive ? "text-blue-500 border-gray-500" : ""
+          }`
         }
       >
         <span className="p-2 font-semibold">All Books</span>
@@ -28,9 +28,9 @@ const Navbar = () => {
       <NavLink
         to="/add-book"
         className={({ isActive }) =>
-          isActive
-            ? "cursor-pointer flex items-center fill-lime-400 bg-lime-950 hover:bg-lime-900 rounded-md duration-100 text-lime-400"
-            : ""
+          `cursor-pointer border-b-2 border-transparent duration-100 hover:text-blue-500 hover:border-blue-500 ${
+            isActive ? "text-blue-500 border-gray-500" : ""
+          }`
         }
       >
         <span className="p-2 font-semibold">Add Book</span>
@@ -38,9 +38,9 @@ const Navbar = () => {
       <NavLink
         to="/myBooks"
         className={({ isActive }) =>
-          isActive
-            ? "cursor-pointer flex items-center fill-lime-400 bg-lime-950 hover:bg-lime-900 rounded-md duration-100 font-bold text-lime-400"
-            : ""
+          `cursor-pointer border-b-2 border-transparent duration-100 hover:text-blue-500 hover:border-blue-500 ${
+            isActive ? "text-blue-500 border-gray-500" : ""
+          }`
         }
       >
         <span className="p-2 font-semibold">My Books</span>
@@ -89,14 +89,18 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex gap-2 sm:gap-3">
         <div>
-          <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' alt="" className="w-12 h-12 rounded-full"/>
+          <img
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            alt=""
+            className="w-12 h-12 rounded-full"
+          />
         </div>
         <div className="flex flex-col items-center gap-2 sm:flex-row">
-          <Link className="px-3 py-2 md:px-5 md:py-2 text-sm md:text-base text-white font-semibold bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
+          <Link className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
             Log In
           </Link>
           <span className="text-lg font-bold">Or</span>
-          <Link className="px-3 py-2 md:px-5 md:py-2 text-sm md:text-base text-white font-semibold bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
+          <Link className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
             Sign Up
           </Link>
         </div>

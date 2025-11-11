@@ -70,10 +70,10 @@ const ClientFeedback = () => {
           speed={2000}
         >
           {clientsDetails.map((client, i) => (
-            <SwiperSlide key={i} className="py-3 px-2">
+            <SwiperSlide key={i} className="py-3 px-3">
               <div
                 style={{ backgroundColor: bgColors[i % bgColors.length] }}
-                className="bg-white rounded-xl h-[300px] p-6 flex flex-col items-center text-center"
+                className="shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)] rounded-xl h-[300px] p-6 flex flex-col items-center text-center"
               >
                 <img
                   src={client.image}
