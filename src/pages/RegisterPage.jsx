@@ -5,14 +5,14 @@ const RegisterPage = () => {
   return (
     <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
       <form className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
-        <fieldset className="w-[350px] p-4 flex flex-col items-center">
+        <fieldset className="w-[250px] sm:w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">
             <div className="flex items-center jusitfy-between">
-              <div className="w-32 border border-gray-300"></div>
+              <div className="w-20 sm:w-32 border border-gray-300"></div>
               <h3 className="text-2xl font-semibold px-5 whitespace-nowrap">
                 Sign Up
               </h3>
-              <div className="w-32 border border-gray-300"></div>
+              <div className="w-20 sm:w-32 border border-gray-300"></div>
             </div>
             <p className="text-sm text-gray-400 text-center mt-3">
               Create your account. It's free and only takes a minute
@@ -20,7 +20,7 @@ const RegisterPage = () => {
           </div>
 
           <div className="space-y-5">
-            <div className="flex flex-col min-w-[300px]">
+            <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Name</label>
               <input
                 type="text"
@@ -30,7 +30,7 @@ const RegisterPage = () => {
               />
             </div>
 
-            <div className="flex flex-col min-w-[300px]">
+            <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Email</label>
               <input
                 type="email"
@@ -40,7 +40,7 @@ const RegisterPage = () => {
               />
             </div>
 
-            <div className="flex flex-col min-w-[300px]">
+            <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Photo URL</label>
               <label className="input validator">
                 <svg
@@ -70,13 +70,13 @@ const RegisterPage = () => {
               </label>
             </div>
 
-            <div className="flex flex-col min-w-[300px]">
+            <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Password</label>
               <input type="password" className="input" placeholder="Password" />
             </div>
           </div>
 
-          <div className="min-w-[300px] flex flex-col items-center gap-2 mt-5">
+          <div className="sm:min-w-[300px] flex flex-col items-center gap-2 mt-5">
             <button className="mt-4 btn w-full bg-blue-500 text-white hover:bg-blue-600">
               Sign Up
             </button>
