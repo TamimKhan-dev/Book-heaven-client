@@ -133,7 +133,7 @@ function AddBook() {
             
             <div className="grid grid-cols-3 gap-6">
               <div className="col-span-3 space-y-4">
-                {/* Cover Image URL */}
+                
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Cover Image URL</label>
                   <input
