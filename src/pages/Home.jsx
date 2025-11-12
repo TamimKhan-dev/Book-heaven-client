@@ -5,6 +5,7 @@ import BooksOfWeek from '../components/bookOfTheWeek/BooksOfTheWeek';
 import RecentlyAddedBooks from '../components/recentlyAddedBooks/RecentlyAddedBooks';
 
 const Home = () => {
+
     return (
         <div>
             <Banner />
