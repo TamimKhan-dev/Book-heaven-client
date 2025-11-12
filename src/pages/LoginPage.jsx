@@ -1,10 +1,46 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 const LoginPage = () => {
+  const { logInUser, googleLogin } = use(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logInUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   return (
     <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
-      <form className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]"
+      >
         <fieldset className="w-[250px] sm:w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">
             <div className="flex items-center jusitfy-between">
@@ -20,20 +56,25 @@ const LoginPage = () => {
           </div>
 
           <div className="space-y-5">
-
             <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Email</label>
               <input
                 type="email"
                 className="input w-full"
                 placeholder="Email"
+                name="email"
                 required
               />
             </div>
 
             <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input
+                type="password"
+                className="input"
+                placeholder="Password"
+                name="password"
+              />
             </div>
           </div>
 
@@ -43,6 +84,7 @@ const LoginPage = () => {
             </button>
             <span className="text-md font-bold text-gray-500 divider">OR</span>
             <button
+              onClick={handleGoogleLogin}
               type="button"
               className="btn bg-white w-full text-black border-[#e5e5e5]"
             >

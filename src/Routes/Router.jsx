@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         Component: MainLayout,
         errorElement: <ErrorPage />,
         children: [
-            {index: true, Component: Home},
+            {path: '/', Component: Home},
             {
                 path: 'all-books',
                 Component: AllBooks

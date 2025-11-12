@@ -9,7 +9,6 @@ const RecentlyAddedBooks = () => {
     setLatestData(books)
   }, [])
 
-  console.log(latestData)
   return (
     <div className="w-10/12 mx-auto mb-18">
       <h3 className="text-4xl lg:5xl font-bold mb-5">Recently Added Books</h3>

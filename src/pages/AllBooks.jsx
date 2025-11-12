@@ -27,7 +27,7 @@ const AllBooks = () => {
           {books.length > 0 ? (
             books.map((book, index) => (
               <AllBooksRow
-                key={book._id}
+                key={book.id}
                 index={index}
                 book={book}
               />

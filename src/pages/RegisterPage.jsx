@@ -1,10 +1,84 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
+import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
+import { auth } from "../firebase/firebase.config";
+
 
 const RegisterPage = () => {
+  const { signUp, googleLogin, setUser, setValues } = use(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const photo = form.photoURL.value;
+    const password = form.password.value;
+
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const valid = pattern.test(password);
+
+    if (!valid) {
+      toast.error(
+        "Password must have at least one uppercase, one lowercase, and be at least 6 characters long."
+      );
+      return;
+    }
+
+    const userInfo = {
+      displayName: name,
+      photoURL: photo,
+    };
+
+    signUp(email, password)
+      .then((res) => {
+        return setValues(userInfo);
+      })
+      .then(() => {
+        return auth.currentUser.reload();
+      })
+      .then(() => {
+        setUser({ ...auth.currentUser }); 
+        Swal.fire({
+          title: "Sign Up Successful!",
+          icon: "success",
+          confirmButtonText: "Go Home",
+          confirmButtonColor: "#2b7fff",
+        }).then(() => navigate("/"));
+      })
+      .catch((error) => {
+        console.error("Signup error:", error);
+        setError(error.message);
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    googleLogin()
+      .then((res) => {
+        setUser(res.user);
+        Swal.fire({
+          title: "Sign Up Successful!",
+          icon: "success",
+          confirmButtonText: "Go Home",
+        }).then(() => {
+          navigate("/");
+        });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   return (
     <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
-      <form className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+      <form
+        onSubmit={handleSignUp}
+        className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]"
+      >
         <fieldset className="w-[250px] sm:w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">
             <div className="flex items-center jusitfy-between">
@@ -25,6 +99,7 @@ const RegisterPage = () => {
               <input
                 type="text"
                 className="input w-full"
+                name="name"
                 placeholder="Name"
                 required
               />
@@ -34,6 +109,7 @@ const RegisterPage = () => {
               <label className="label">Email</label>
               <input
                 type="email"
+                name="email"
                 className="input w-full"
                 placeholder="Email"
                 required
@@ -63,6 +139,7 @@ const RegisterPage = () => {
                   type="url"
                   required
                   placeholder="https://"
+                  name="photoURL"
                   pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
                   title="Must be valid URL"
                   className="w-full"
@@ -72,7 +149,12 @@ const RegisterPage = () => {
 
             <div className="flex flex-col sm:min-w-[300px]">
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input
+                type="password"
+                className="input"
+                placeholder="Password"
+                name="password"
+              />
             </div>
           </div>
 
@@ -81,7 +163,11 @@ const RegisterPage = () => {
               Sign Up
             </button>
             <span className="text-md font-bold text-gray-500 divider">OR</span>
-            <button type="button" className="btn bg-white w-full text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleSignUp}
+              type="button"
+              className="btn bg-white w-full text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"
@@ -114,7 +200,16 @@ const RegisterPage = () => {
           </div>
         </fieldset>
       </form>
-      <p className="font-semibold">Already have an account? <Link to='/login' className="text-blue-500 border-b-2 border-transparent hover:border-blue-500 font-bold duration-150 cursor-pointer">Log In</Link></p>
+      <p className="font-semibold">
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="text-blue-500 border-b-2 border-transparent hover:border-blue-500 font-bold duration-150 cursor-pointer"
+        >
+          Log In
+        </Link>
+      </p>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

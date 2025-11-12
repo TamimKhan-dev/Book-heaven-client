@@ -1,8 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import logoImg from "../assets/book-logo.png";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 const Navbar = () => {
+  const { user, logOutUser } = use(AuthContext);
   const navItems = (
     <>
       <NavLink
@@ -90,19 +92,35 @@ const Navbar = () => {
       <div className="navbar-end flex gap-2 sm:gap-3">
         <div>
           <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            src={
+              user
+                ? user.photoURL
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            }
             alt=""
             className="w-12 h-12 rounded-full"
           />
         </div>
-        <div className="flex flex-col items-center gap-2 sm:flex-row">
-          <Link to='/login' className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
-            Log In
-          </Link>
-          <span className="text-lg font-bold">Or</span>
-          <Link to='/register' className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
-            Sign Up
-          </Link>
+        <div>
+          {user ? (
+            <button onClick={logOutUser} className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">Sign Out</button>
+          ) : (
+            <div className="flex flex-col items-center gap-2 sm:flex-row">
+              <Link
+                to="/login"
+                className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold"
+              >
+                Log In
+              </Link>
+              <span className="text-lg font-bold">Or</span>
+              <Link
+                to="/register"
+                className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold"
+              >
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
