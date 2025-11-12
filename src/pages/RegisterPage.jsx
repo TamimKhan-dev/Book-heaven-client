@@ -3,8 +3,8 @@ import { Link } from "react-router";
 
 const RegisterPage = () => {
   return (
-    <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10">
-      <form className="bg-white rounded-lg pb-8">
+    <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
+      <form className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
         <fieldset className="w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">
             <div className="flex items-center jusitfy-between">
@@ -109,7 +109,7 @@ const RegisterPage = () => {
                   ></path>
                 </g>
               </svg>
-              Login with Google
+              Sign Up with Google
             </button>
           </div>
         </fieldset>
