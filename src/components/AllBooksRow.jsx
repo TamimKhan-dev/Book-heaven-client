@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router";
 
-const MyBooksRow = ({ index, book, onUpdate, onDelete }) => {
+const AllBooksRow = ({ index, book }) => {
   return (
     <tr>
       <td className="hidden sm:block">{index + 1}</td>
@@ -19,23 +20,18 @@ const MyBooksRow = ({ index, book, onUpdate, onDelete }) => {
       </td>
       <td className="font-semibold">{book.genre}</td>
       <td className="font-semibold">{book.price}$</td>
-      <td className="font-semibold hidden sm:block pt-7 text-base">{book.rating}</td>
+      <td className="font-semibold hidden sm:block pt-7 text-base">
+        {book.rating}
+      </td>
       <td className="space-x-2">
-        <button
+        <Link to={`/book-details/${book.id}`}
           className="btn btn-sm btn-outline btn-info hover:bg-blue-500 hover:text-white"
-          onClick={() => onUpdate(book)}
         >
-          Update
-        </button>
-        <button
-          className="btn btn-sm btn-outline btn-error"
-          onClick={() => onDelete(book._id)}
-        >
-          Delete
-        </button>
+          View Details
+        </Link>
       </td>
     </tr>
   );
 };
 
-export default MyBooksRow;
+export default AllBooksRow;

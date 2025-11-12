@@ -1,31 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyBooksRow from "../components/MyBooksRow";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import bookData from '../data/books.json'
 
 const mySwal = withReactContent(Swal);
 
 const MyBooks = () => {
-  const [books, setBooks] = useState([
-    {
-      _id: "1",
-      title: "Atomic Habits",
-      author: "James Clear",
-      genre: "Self-help",
-      price: 350,
-      rating: 4.7,
-      image: "https://covers.openlibrary.org/b/id/10958382-L.jpg",
-    },
-    {
-      _id: "2",
-      title: "The Hobbit",
-      author: "J.R.R. Tolkien",
-      genre: "Fantasy",
-      price: 420,
-      rating: 4.7,
-      image: "https://covers.openlibrary.org/b/id/8101342-L.jpg",
-    },
-  ]);
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    setBooks(bookData)
+  }, [])
 
   const handleUpdate = (book) => {
     let updated = { ...book };
@@ -145,7 +131,7 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="p-6">
+    <div className="p-6 mb-10">
       <h2 className="text-center text-4xl font-bold mb-4">My Books</h2>
       <table className="table bg-white">
         <thead>
