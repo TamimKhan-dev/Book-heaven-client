@@ -96,11 +96,11 @@ const Navbar = () => {
           />
         </div>
         <div className="flex flex-col items-center gap-2 sm:flex-row">
-          <Link className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
+          <Link to='/login' className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
             Log In
           </Link>
           <span className="text-lg font-bold">Or</span>
-          <Link className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
+          <Link to='/register' className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">
             Sign Up
           </Link>
         </div>
