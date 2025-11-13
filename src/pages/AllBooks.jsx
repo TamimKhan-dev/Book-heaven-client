@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import bookData from '../data/books.json'
 import AllBooksRow from "../components/AllBooksRow";
+import axios from "axios";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        setBooks(bookData)
+        axios.get('http://localhost:5000/all-books')
+          .then(res => {
+            setBooks(res.data);
+          })
+          .catch(err => {
+            console.error("Error fetching books:", err);
+          })
     }, [])
 
   return (

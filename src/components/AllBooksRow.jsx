@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const AllBooksRow = ({ index, book }) => {
+  console.log(book)
   return (
     <tr>
       <td className="hidden sm:block">{index + 1}</td>
@@ -9,7 +10,7 @@ const AllBooksRow = ({ index, book }) => {
         <div className="flex items-center sm:gap-3">
           <div className="avatar">
             <div className="mask mask-squircle h-12 w-12 hidden sm:block">
-              <img src={book.image} alt={book.title} />
+              <img src={book.coverImage} alt={book.title} />
             </div>
           </div>
           <div>
