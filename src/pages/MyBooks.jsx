@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import MyBooksRow from "../components/MyBooksRow";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import bookData from '../data/books.json'
+import axios from "axios";
+import { AuthContext } from "../provider/AuthContext";
 
 const mySwal = withReactContent(Swal);
 
 const MyBooks = () => {
+  const { user } = use(AuthContext);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    setBooks(bookData)
-  }, [])
+    if (user?.email) {
+      axios
+        .get(`http://localhost:5000/myBooks/${user.email}`)
+        .then((res) => {
+          setBooks(res.data);
+        })
+        .catch((err) => {
+          console.log("Error while fetching data:", err);
+        });
+    }
+  }, [user]);
 
   const handleUpdate = (book) => {
     let updated = { ...book };
@@ -55,8 +66,8 @@ const MyBooks = () => {
               <input
                 className="input input-bordered w-full"
                 placeholder="Image URL"
-                defaultValue={book.image}
-                onChange={(e) => (updated.image = e.target.value)}
+                defaultValue={book.coverImage}
+                onChange={(e) => (updated.coverImage = e.target.value)}
               />
             </div>
 
@@ -94,23 +105,47 @@ const MyBooks = () => {
                 onChange={(e) => (updated.rating = Number(e.target.value))}
               />
             </div>
+
+            <div className="flex flex-col">
+                <label className="block text-gray-700 font-medium mb-2">
+                  Summary
+                </label>
+                <textarea
+                  defaultValue={book.summary}
+                  onChange={(e) => (updated.summary = e.target.value)}
+                  placeholder="Write a brief synopsis..."
+                  className="w-full text-sm px-4 py-2 border border-gray-300 rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+            </div>
           </div>
         ),
         preConfirm: () => updated,
       })
       .then((result) => {
         if (result.isConfirmed) {
-          const newList = books.map((b) =>
-            b.id === book.id ? { ...b, ...result.value } : b
-          );
-          setBooks(newList);
+          axios
+            .put(`http://localhost:5000/update-book/${book._id}`, result.value)
+            .then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Book updated successfully!",
+                timer: 1200,
+                showConfirmButton: false,
+              });
 
-          Swal.fire({
-            icon: "success",
-            title: "Book updated successfully!",
-            timer: 1200,
-            showConfirmButton: false,
-          });
+              const newList = books.map((b) =>
+                b._id === book._id ? { ...b, ...result.value } : b
+              );
+              setBooks(newList);
+            })
+            .catch((err) => {
+              console.log(err.message);
+              Swal.fire({
+                icon: "error",
+                title: "Failed to update book!",
+                text: err.message,
+              });
+            });
         }
       });
   };
@@ -125,8 +160,20 @@ const MyBooks = () => {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        setBooks((prev) => prev.filter((b) => b.id !== id));
-        Swal.fire("Deleted!", "The book has been removed.", "success");
+        axios.delete(`http://localhost:5000/delete-book/${id}`)
+          .then(res => {
+            if (res.data.deletedCount === 1) {
+              setBooks((prev) => prev.filter((b) => b._id !== id));
+              Swal.fire("Deleted!", "The book has been removed.", "success");
+            }
+            else {
+              Swal.fire("Error", res.data.message, "error");
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            Swal.fire("Error", "Failed to delete book!", "error");
+          })
       }
     });
   };

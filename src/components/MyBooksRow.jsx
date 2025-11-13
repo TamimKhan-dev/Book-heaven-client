@@ -8,12 +8,12 @@ const MyBooksRow = ({ index, book, onUpdate, onDelete }) => {
         <div className="flex items-center sm:gap-3">
           <div className="avatar">
             <div className="mask mask-squircle h-12 w-12 hidden sm:block">
-              <img src={book.image} alt={book.title} />
+              <img src={book.coverImage} alt={book.title} />
             </div>
           </div>
           <div>
             <p className="font-bold">{book.title}</p>
-            <p className="text-sm opacity-50">{book.author_name}</p>
+            <p className="text-sm opacity-50">{book.author}</p>
           </div>
         </div>
       </td>

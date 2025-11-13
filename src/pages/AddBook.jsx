@@ -165,7 +165,6 @@ if (!user) {
                 </div>
               </div>
 
-              {/* Price */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                 <label className="sm:w-24 text-gray-700 font-medium">
                   Price

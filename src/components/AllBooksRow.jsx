@@ -15,7 +15,7 @@ const AllBooksRow = ({ index, book }) => {
           </div>
           <div>
             <p className="font-bold">{book.title}</p>
-            <p className="text-sm opacity-50">{book.author_name}</p>
+            <p className="text-sm opacity-50">{book.author}</p>
           </div>
         </div>
       </td>
@@ -25,7 +25,7 @@ const AllBooksRow = ({ index, book }) => {
         {book.rating}
       </td>
       <td className="space-x-2">
-        <Link to={`/book-details/${book.id}`}
+        <Link to={`/book-details/${book._id}`}
           className="btn btn-sm btn-outline btn-info hover:bg-blue-500 hover:text-white"
         >
           View Details

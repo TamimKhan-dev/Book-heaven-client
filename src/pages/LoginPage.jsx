@@ -27,6 +27,7 @@ const LoginPage = () => {
     googleLogin()
       .then((result) => {
         console.log(result);
+        
       })
       .catch((error) => {
         const errorCode = error.code;
