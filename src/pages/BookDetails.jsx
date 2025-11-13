@@ -19,7 +19,7 @@ const BookDetails = () => {
   }, []);
   const singleBook = books.find((book) => book._id === id);
   if (!singleBook) {
-    return <p>Loading book details...</p>;
+    return <span className="loading loading-bars loading-xl relative left-1/2 my-10 top-3 lg:top-20"></span>;
   }
   const { coverImage, title, author, genre, rating, price, summary } =
     singleBook;
@@ -29,7 +29,7 @@ const BookDetails = () => {
     <div className="min-h-[50vh] flex justify-center items-center">
       <div className="bg-white max-w-[700px] mx-4 rounded-lg my-10 py-4 px-6 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
         <div className="md:flex gap-5">
-          {/* image */}
+
           <div className="self-start">
             <img
               src={coverImage}
@@ -37,7 +37,7 @@ const BookDetails = () => {
               className="max-w-3xs mx-auto rounded-lg"
             />
           </div>
-          {/* content */}
+
           <div className="mt-6 md:mt-0 space-y-4 mb-3">
             <h4 className="text-xl font-bold">{title}</h4>
             <div>
@@ -71,7 +71,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
-      {/* description */}
+
       <div></div>
       <Toaster position="top-center" reverseOrder={false} />
     </div>

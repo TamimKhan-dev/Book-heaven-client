@@ -12,7 +12,6 @@ const Home = () => {
             <RecentlyAddedBooks />
             <ClientFeedback />
             <BooksOfWeek />
-            
         </div>
     );
 };

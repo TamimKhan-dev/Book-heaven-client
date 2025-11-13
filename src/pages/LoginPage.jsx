@@ -1,9 +1,11 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { logInUser, googleLogin } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +17,12 @@ const LoginPage = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        Swal.fire({
+          title: "Sign Up Successful!",
+          icon: "success",
+          confirmButtonText: "Go Home",
+          confirmButtonColor: "#2b7fff",
+        }).then(() => navigate("/"));
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -27,7 +35,12 @@ const LoginPage = () => {
     googleLogin()
       .then((result) => {
         console.log(result);
-        
+        Swal.fire({
+          title: "Sign Up Successful!",
+          icon: "success",
+          confirmButtonText: "Go Home",
+          confirmButtonColor: "#2b7fff",
+        }).then(() => navigate("/"));
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -10,8 +10,10 @@ const mySwal = withReactContent(Swal);
 const MyBooks = () => {
   const { user } = use(AuthContext);
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     if (user?.email) {
       axios
         .get(`http://localhost:5000/myBooks/${user.email}`)
@@ -20,7 +22,10 @@ const MyBooks = () => {
         })
         .catch((err) => {
           console.log("Error while fetching data:", err);
-        });
+        })
+        .finally(() => {
+          setLoading(false);
+        })
     }
   }, [user]);
 
@@ -178,9 +183,9 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="p-6 mb-10">
+    <div className="relative p-6 mb-10">
       <h2 className="text-center text-4xl font-bold mb-4">My Books</h2>
-      <table className="table bg-white">
+      {loading ? <span className="loading loading-bars loading-xl absolute left-1/2 top-30"></span> : <table className="table bg-white">
         <thead>
           <tr>
             <th className="hidden sm:block">SL</th>
@@ -206,14 +211,14 @@ const MyBooks = () => {
             <tr>
               <td
                 colSpan="5"
-                className="text-center text-2xl font-semibold py-10"
+                className="text-center md:translate-x-32 lg:translate-x-50 text-2xl font-semibold py-10"
               >
                 No books added yet! 😕
               </td>
             </tr>
           )}
         </tbody>
-      </table>
+      </table>}
     </div>
   );
 };

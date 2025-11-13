@@ -8,6 +8,7 @@ import MyBooks from "../pages/MyBooks";
 import BookDetails from "../pages/BookDetails";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'add-book',
-                Component: AddBook
+                element: <PrivateRoute><AddBook/></PrivateRoute>
             },
             {
                 path: 'myBooks',
-                Component: MyBooks
+                element: <PrivateRoute><MyBooks/></PrivateRoute>
             },
             {
                 path: 'book-details/:id',

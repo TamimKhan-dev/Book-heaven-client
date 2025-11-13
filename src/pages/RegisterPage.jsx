@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
 import { auth } from "../firebase/firebase.config";
 
-
 const RegisterPage = () => {
   const { signUp, googleLogin, setUser, setValues } = use(AuthContext);
   const [error, setError] = useState("");
@@ -35,14 +34,14 @@ const RegisterPage = () => {
     };
 
     signUp(email, password)
-      .then((res) => {
+      .then(() => {
         return setValues(userInfo);
       })
       .then(() => {
         return auth.currentUser.reload();
       })
       .then(() => {
-        setUser({ ...auth.currentUser }); 
+        setUser({ ...auth.currentUser });
         Swal.fire({
           title: "Sign Up Successful!",
           icon: "success",
@@ -52,7 +51,13 @@ const RegisterPage = () => {
       })
       .catch((error) => {
         console.error("Signup error:", error);
-        setError(error.message);
+
+        Swal.fire({
+          icon: "error",
+          title: "Signup Failed",
+          text: error.message, // this will show "user already exists" or other Firebase error
+          confirmButtonText: "OK",
+        });
       });
   };
 

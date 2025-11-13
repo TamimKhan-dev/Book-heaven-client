@@ -2,7 +2,7 @@ import React, { use } from "react";
 import logoImg from "../assets/book-logo.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
-
+import { Tooltip } from "react-tooltip";
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
   const navItems = (
@@ -97,13 +97,27 @@ const Navbar = () => {
                 ? user.photoURL
                 : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             }
-            alt=""
-            className="w-12 h-12 rounded-full"
+            alt={user?.displayName}
+            data-tooltip-id="userTooltip"
+            className="w-12 h-12 rounded-full cursor-pointer"
           />
+          {user && (
+            <Tooltip id="userTooltip" place="bottom" effect="solid" style={{ zIndex: 9999 }}>
+              <div className="flex flex-col text-left">
+                <span className="font-semibold">{user.displayName}</span>
+                <span className="text-sm">{user.email}</span>
+              </div>
+            </Tooltip>
+          )}
         </div>
         <div>
           {user ? (
-            <button onClick={logOutUser} className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold">Sign Out</button>
+            <button
+              onClick={logOutUser}
+              className="cursor-pointer box-border transition-all bg-blue-500 text-white px-6 py-2 rounded-lg hover:brightness-110 active:brightness-90 font-semibold"
+            >
+              Sign Out
+            </button>
           ) : (
             <div className="flex flex-col items-center gap-2 sm:flex-row">
               <Link
