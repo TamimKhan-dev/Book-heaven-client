@@ -1,11 +1,13 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { logInUser, googleLogin } = use(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,14 +22,19 @@ const LoginPage = () => {
         Swal.fire({
           title: "Sign Up Successful!",
           icon: "success",
-          confirmButtonText: "Go Home",
           confirmButtonColor: "#2b7fff",
-        }).then(() => navigate("/"));
+        }).then(() => navigate(location.state || "/"));
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        Swal.fire({
+          icon: "error",
+          title: "Log In Failed",
+          text: error.message,
+          confirmButtonText: "OK",
+        });
       });
   };
 
@@ -38,14 +45,19 @@ const LoginPage = () => {
         Swal.fire({
           title: "Sign Up Successful!",
           icon: "success",
-          confirmButtonText: "Go Home",
           confirmButtonColor: "#2b7fff",
-        }).then(() => navigate("/"));
+        }).then(() => navigate(location.state || "/"));
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        Swal.fire({
+          icon: "error",
+          title: "Log In Failed",
+          text: error.message,
+          confirmButtonText: "OK",
+        });
       });
   };
 

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../provider/AuthContext";
 
 const AllBooksRow = ({ index, book }) => {
+  const {user} = use(AuthContext);
 
   return (
     <tr>
@@ -25,7 +27,8 @@ const AllBooksRow = ({ index, book }) => {
         {book.rating}
       </td>
       <td className="space-x-2">
-        <Link to={`/book-details/${book._id}`}
+        <Link to={user ? `/book-details/${book._id}` : '/login'}
+          state={user ? null : `/book-details/${book._id}` }
           className="btn btn-sm btn-outline btn-info hover:bg-blue-500 hover:text-white"
         >
           View Details

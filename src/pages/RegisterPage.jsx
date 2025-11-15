@@ -55,7 +55,7 @@ const RegisterPage = () => {
         Swal.fire({
           icon: "error",
           title: "Signup Failed",
-          text: error.message, // this will show "user already exists" or other Firebase error
+          text: error.message,
           confirmButtonText: "OK",
         });
       });
@@ -75,6 +75,12 @@ const RegisterPage = () => {
       })
       .catch((err) => {
         setError(err.message);
+        Swal.fire({
+          icon: "error",
+          title: "Signup Failed",
+          text: error.message,
+          confirmButtonText: "OK",
+        });
       });
   };
 
