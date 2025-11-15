@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { IoIosStar } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { AuthContext } from "../provider/AuthContext";
 
 const BookDetails = () => {
   const { id } = useParams();
   const [books, setBooks] = useState([]);
+  const { theme } = use(AuthContext);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/all-books")
+      .get("https://book-heaven-api-server-eight.vercel.app/all-books")
       .then((res) => {
         setBooks(res.data);
       })
@@ -27,7 +29,7 @@ const BookDetails = () => {
 
   return (
     <div className="min-h-[50vh] flex justify-center items-center">
-      <div className="bg-white max-w-[700px] mx-4 rounded-lg my-10 py-4 px-6 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+      <div className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} max-w-[700px] mx-4 rounded-lg my-10 py-4 px-6 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]`}>
         <div className="md:flex gap-5">
 
           <div className="self-start">

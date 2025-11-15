@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import { Tooltip } from "react-tooltip";
 const Navbar = () => {
-  const { user, logOutUser } = use(AuthContext);
+  const { user, logOutUser, handleTheme } = use(AuthContext);
   const navItems = (
     <>
       <NavLink
@@ -73,7 +73,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 z-50 rounded-box mt-3 w-52 p-2 shadow"
           >
             {navItems}
           </ul>
@@ -90,11 +90,59 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-2 sm:gap-3">
-        <div>
+        <div className="md:flex items-center gap-3">
+          <label className="toggle text-base-content mb-2 md:mb-0">
+            <input
+              onChange={(e) => handleTheme(e.target.checked)}
+              type="checkbox"
+              defaultChecked={localStorage.getItem('theme') === 'dark'}
+              className="theme-controller"
+            />
+
+            <svg
+              aria-label="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </g>
+            </svg>
+
+            <svg
+              aria-label="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </g>
+            </svg>
+          </label>
           <img
             src={
               user
-                ? user.photoURL
+                ? user?.photoURL
                 : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             }
             alt={user?.displayName}
@@ -102,7 +150,12 @@ const Navbar = () => {
             className="w-12 h-12 rounded-full cursor-pointer"
           />
           {user && (
-            <Tooltip id="userTooltip" place="bottom" effect="solid" style={{ zIndex: 9999 }}>
+            <Tooltip
+              id="userTooltip"
+              place="bottom"
+              effect="solid"
+              style={{ zIndex: 9999 }}
+            >
               <div className="flex flex-col text-left">
                 <span className="font-semibold">{user.displayName}</span>
                 <span className="text-sm">{user.email}</span>

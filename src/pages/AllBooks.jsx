@@ -5,22 +5,27 @@ import { AuthContext } from "../provider/AuthContext";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
-  const { loading } = use(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const { theme } = use(AuthContext);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/all-books')
+      setLoading(true)
+        axios.get('https://book-heaven-api-server-eight.vercel.app/all-books')
           .then(res => {
             setBooks(res.data);
           })
           .catch(err => {
             console.error("Error fetching books:", err);
           })
+          .finally(() => {
+            setLoading(false);
+          })
     }, [])
 
   return (
     <div className="p-6 mb-8 relative">
       <h2 className="text-center text-4xl font-bold mb-4">All Books</h2>
-      { loading ? <span className="loading loading-bars loading-xl absolute left-1/2 top-44"></span> : <table className="table bg-white">
+      { loading ? <span className="loading loading-bars loading-xl absolute left-1/2 top-44"></span> : <table className={`table ${theme === 'dark' ? 'bg-black' : 'bg-white'}`}>
         <thead>
           <tr>
             <th className="hidden sm:block">SL</th>

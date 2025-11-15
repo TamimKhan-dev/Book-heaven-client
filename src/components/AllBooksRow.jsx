@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const AllBooksRow = ({ index, book }) => {
-  console.log(book)
+
   return (
     <tr>
       <td className="hidden sm:block">{index + 1}</td>

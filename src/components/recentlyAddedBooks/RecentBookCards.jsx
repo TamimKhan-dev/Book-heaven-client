@@ -1,9 +1,11 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../../provider/AuthContext";
 
 const RecentBookCards = ({ book }) => {
+  const { theme } = use(AuthContext);
   const { coverImage, title, author, price, rating, genre } = book;
   return (
-    <div className="bg-white flex flex-col justify-around p-4 max-w-[257px] w-fit rounded-md">
+    <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} flex flex-col justify-around p-4 max-w-[257px] w-fit rounded-md`}>
       <div className="px-8 mb-3">
         <img src={coverImage} alt="" className="w-40 h-60" />
       </div>

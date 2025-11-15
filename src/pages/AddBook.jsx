@@ -14,7 +14,7 @@ export default function AddBookForm() {
   const [summary, setSummary] = useState('');
   const [price, setPrice] = useState('');
   const [hoveredStar, setHoveredStar] = useState(0);
-  const { user, loading } = use(AuthContext);
+  const { user, loading, theme } = use(AuthContext);
 
 if (loading) {
   return <p>Loading...</p>;
@@ -42,7 +42,7 @@ if (!user) {
       userEmail: user.email
     };
     
-    axios.post('http://localhost:5000/add-book', bookData)
+    axios.post('https://book-heaven-api-server-eight.vercel.app/add-book', bookData)
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -60,25 +60,25 @@ if (!user) {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center p-4 sm:p-6">
+    <div className={`min-h-screen ${theme === 'dark' ? '' : 'bg-linear-to-br from-gray-200 to-gray-300'} flex items-center justify-center p-4 sm:p-6`}>
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
 
-        <div className="bg-white border-b border-gray-200 px-4 sm:px-8 py-4 sm:py-6">
+        <div className={`${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} px-4 sm:px-8 py-4 sm:py-6`}>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 text-gray-700" />
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Add New Book</h1>
+            <BookOpen className={`w-6 h-6 sm:w-7 sm:h-7 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`} />
+            <h1 className={`text-2xl sm:text-3xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>Add New Book</h1>
           </div>
         </div>
 
-        <div className="px-4 sm:px-8 py-4 sm:py-6 space-y-6 sm:space-y-8">
+        <div className={`px-4 sm:px-8 ${theme === 'dark' ? 'bg-gray-700' : ''} py-4 sm:py-6 space-y-6 sm:space-y-8`}>
 
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Core Book Information</h2>
+            <h2 className={`text-lg sm:text-xl font-bold ${theme === 'dark' ? '' : 'text-gray-800'} mb-3 sm:mb-4`}>Core Book Information</h2>
             
             <div className="space-y-3 sm:space-y-4">
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <label className="sm:w-24 text-gray-700 font-medium">
+                <label className={`sm:w-24 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>
                   Title
                 </label>
                 <input
@@ -92,7 +92,7 @@ if (!user) {
 
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <label className="sm:w-24 text-gray-700 font-medium">
+                <label className={`sm:w-24 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>
                   Author
                 </label>
                 <input
@@ -106,7 +106,7 @@ if (!user) {
 
 
               <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                <label className="sm:w-24 text-gray-700 font-medium sm:pt-2">
+                <label className={`sm:w-24 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>
                   Genre
                 </label>
                 <div className="flex-1">
@@ -161,12 +161,12 @@ if (!user) {
                       </button>
                     ))}
                   </div>
-                  <p className="text-sm text-gray-600">Your Rating: {rating}/5 Stars</p>
+                  <p className={`text-sm ${theme === 'dark' ? '' : 'text-gray-600'}`}>Your Rating: {rating}/5 Stars</p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <label className="sm:w-24 text-gray-700 font-medium">
+                <label className={`sm:w-24 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>
                   Price
                 </label>
                 <input
@@ -183,7 +183,7 @@ if (!user) {
 
 
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Media and Content</h2>
+            <h2 className={`text-lg sm:text-xl font-bold ${theme === 'dark' ? '' : 'text-gray-800'} mb-3 sm:mb-4`}>Media and Content</h2>
             
             <div className="space-y-3 sm:space-y-4">
 
@@ -217,11 +217,11 @@ if (!user) {
 
 
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Your Account Information (Read-only)</h2>
+            <h2 className={`text-lg sm:text-xl font-bold ${theme === 'dark' ? '' : 'text-gray-800'} mb-3 sm:mb-4`}>Your Account Information (Read-only)</h2>
             
             <div className="space-y-3 sm:space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <label className="sm:w-32 text-gray-700 font-medium">User Name</label>
+                <label className={`sm:w-32 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>User Name</label>
                 <input
                   type="text"
                   value={user.displayName}
@@ -231,7 +231,7 @@ if (!user) {
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <label className="sm:w-32 text-gray-700 font-medium">User Email</label>
+                <label className={`sm:w-32 ${theme === 'dark' ? '' : 'text-gray-700'} font-medium`}>User Email</label>
                 <input
                   type="email"
                   value={user.email}

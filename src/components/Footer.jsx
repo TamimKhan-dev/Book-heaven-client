@@ -1,12 +1,14 @@
-import React from "react";
+import React, { use } from "react";
 import logoImg from "../assets/book-logo.png";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
+import { AuthContext } from "../provider/AuthContext";
 
 const Footer = () => {
+  const { theme } = use(AuthContext);
   return (
     <>
-      <footer className="flex flex-col items-center px-10 py-7 bg-gray-300">
+      <footer className={`flex flex-col items-center px-10 py-7 ${theme === 'dark' ?   '' : 'bg-gray-300'} w-full`}>
         <div className="flex flex-col lg:flex-row lg:justify-around w-full pb-10 border-b-2 border-gray-400">
           <div className="flex flex-col gap-10 mb-5">
             <div className="flex gap-2 items-center">
@@ -26,8 +28,8 @@ const Footer = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-40">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Services</h3>
-              <ul className="text-md font-normal text-gray-600">
+              <h3 className={`text-xl font-semibold ${theme === 'dark' ? '' : 'text-gray-900'} mb-2`}>Our Services</h3>
+              <ul className={`text-md font-normal ${theme === 'dark' ? '' : 'text-gray-600'}`}>
                 <li>Help Center</li>
                 <li>Returns</li>
                 <li>Product Recalls</li>
@@ -37,8 +39,8 @@ const Footer = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Explore</h3>
-              <ul className="text-md font-normal text-gray-600">
+              <h3 className={`text-xl font-semibold ${theme === 'dark' ? '' : 'text-gray-900'} mb-2`}>Explore</h3>
+              <ul className={`text-md font-normal ${theme === 'dark' ? '' : 'text-gray-600'}`}>
                 <li>About us</li>
                 <li>Sitemap</li>
                 <li>Bookmarks</li>
@@ -46,8 +48,8 @@ const Footer = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Categories</h3>
-              <ul className="text-md font-normal text-gray-600">
+              <h3 className={`text-xl font-semibold ${theme === 'dark' ? '' : 'text-gray-900'} mb-2`}>Categories</h3>
+              <ul className={`text-md font-normal ${theme === 'dark' ? '' : 'text-gray-600'}`}>
                 <li>Action</li>
                 <li>Comedy</li>
                 <li>Drama</li>
