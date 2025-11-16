@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { auth } from "../firebase/firebase.config";
 
 const RegisterPage = () => {
-  const { signUp, googleLogin, setUser, setValues } = use(AuthContext);
+  const { signUp, googleLogin, setUser, setValues, theme } = use(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -88,7 +88,7 @@ const RegisterPage = () => {
     <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
       <form
         onSubmit={handleSignUp}
-        className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]"
+        className={`${theme === 'dark' ? 'bg-black text-white' : 'bg-white'} rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]`}
       >
         <fieldset className="w-[250px] sm:w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">

@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 
 const LoginPage = () => {
-  const { logInUser, googleLogin } = use(AuthContext);
+  const { logInUser, googleLogin, theme } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
@@ -65,7 +65,7 @@ const LoginPage = () => {
     <div className="min-h-[50vh] flex flex-col gap-5 justify-center items-center py-10 mx-5">
       <form
         onSubmit={handleLogin}
-        className="bg-white rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]"
+        className={`${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-lg pb-8 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]`}
       >
         <fieldset className="w-[250px] sm:w-[350px] p-4 flex flex-col items-center">
           <div className="pb-2">
@@ -101,6 +101,7 @@ const LoginPage = () => {
                 placeholder="Password"
                 name="password"
               />
+              <p className="label text-sm">Forgot password</p>
             </div>
           </div>
 
