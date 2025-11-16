@@ -1,16 +1,33 @@
-# React + Vite
+## The Book Heaven
+**Description:** Book Heaven is a modern and user-friendly online book platform designed for readers who want a simple, enjoyable, and efficient way to explore books.
+The goal of this website is to bring book lovers closer to the stories they love by offering a clean interface, easy navigation, and detailed book information—all in one place.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+***
+**Live Link**: https://cool-sopapillas-ca1f0f.netlify.app/
 
-Currently, two official plugins are available:
+## Here are some key features of this website:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**1. Detailed Book Pages::** Each book has a rich detail page with description, price, rating, and cover image.
 
-## React Compiler
+**2. User Comments System:** Readers can share thoughts on books, with comments stored and displayed instantly.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**3. Clean & Modern Interface:** A smooth and intuitive UI that makes browsing and reading book details enjoyable.
 
-## Expanding the ESLint configuration
+**4. Smart Filters:** Easily find books by rating.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**5. Responsive Design:** Fully optimized for mobile, tablet, and desktop devices.
+
+## Technologies used in this website
+
+**User interface:** React.js (Tailwindcss, DaisyUI).  
+**User Authentication:** Firebase.  
+**Routing:** React-router.  
+**npm packages:**  
+- lucide-react
+- react-hot-toast
+- react-icons
+- react-tooltip
+- sweetalert2
+- swiper  
+
+**Other:** Vite
