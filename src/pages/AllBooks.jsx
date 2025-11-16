@@ -7,11 +7,11 @@ const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const { theme } = use(AuthContext);
-  console.log(books)
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/all-books")
+      .get("https://book-heaven-api-server-eight.vercel.app/all-books")
       .then((res) => {
         setBooks(res.data);
       })
@@ -26,7 +26,7 @@ const AllBooks = () => {
   const handleSort = () => {
     setLoading(true)
       
-     axios.get('http://localhost:5000/all-books-sorted')
+     axios.get('https://book-heaven-api-server-eight.vercel.app/all-books-sorted')
        .then(res => {
         setBooks(res.data);
        })

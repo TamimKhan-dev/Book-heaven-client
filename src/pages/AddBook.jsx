@@ -39,7 +39,8 @@ if (!user) {
       coverImage,
       summary,
       price: parseFloat(price),
-      userEmail: user.email
+      userEmail: user.email,
+      comments: []
     };
     
     axios.post('https://book-heaven-api-server-eight.vercel.app/add-book', bookData)
@@ -51,6 +52,15 @@ if (!user) {
             timer: 1500,
             showConfirmButton: false,
           });
+
+          setTitle('');
+          setAuthor('');
+          setCoverImage('');
+          setRating(0);
+          setHoveredStar(0);
+          setGenre('');
+          setPrice('');
+          setSummary('');
         }
       })
       .catch(error => {

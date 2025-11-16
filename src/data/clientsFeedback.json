@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Alice Brown",
+    "city": "New York",
+    "feedback": "I found so many rare and interesting books here! The collection is impressive and I keep discovering new titles.",
+    "image": "https://i.ibb.co.com/TMB1qzgh/test-01.png"
+  },
+  {
+    "name": "Michael Lee",
+    "city": "London",
+    "feedback": "Fast delivery and great service. I’ve found several of my favorite books here and always enjoy browsing the collection.",
+    "image": "https://i.ibb.co.com/99XMZDXZ/test-02.png"
+  },
+  {
+    "name": "Sophia Martinez",
+    "city": "Los Angeles",
+    "feedback": "I love the book recommendations. Every time I visit, I find something new and exciting to read.",
+    "image": "https://i.ibb.co.com/pjFB2gWJ/test-03.png"
+  },
+  {
+    "name": "Daniel Kim",
+    "city": "Toronto",
+    "feedback": "The website is easy to navigate, and my orders always arrive quickly and in excellent condition.",
+    "image": "https://i.ibb.co.com/zvB76dp/test-04.png"
+  },
+  {
+    "name": "Emma Johnson",
+    "city": "Sydney",
+    "feedback": "A great mix of modern novels and classics. I always enjoy discovering new stories here.",
+    "image": "https://i.ibb.co.com/TMB1qzgh/test-01.png"
+  }
+]
