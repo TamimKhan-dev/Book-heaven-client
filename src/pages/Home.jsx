@@ -5,6 +5,7 @@ import BooksOfWeek from '../components/bookOfTheWeek/BooksOfTheWeek';
 import RecentlyAddedBooks from '../components/recentlyAddedBooks/RecentlyAddedBooks';
 import Container from '../components/shared/Container';
 import FeatureHighlight from '../components/featureHighlight/FeatureHighlight';
+import Discount from '../components/Discount/Discount';
 
 const Home = () => {
 
@@ -15,6 +16,7 @@ const Home = () => {
             <RecentlyAddedBooks />
             <ClientFeedback />
             <BooksOfWeek />
+            <Discount />
         </Container>
     );
 };
