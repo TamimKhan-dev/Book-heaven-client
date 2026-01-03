@@ -10,7 +10,7 @@ const ClientFeedback = () => {
   const bgColors = ["#f4fbf2", "#fef5f5", "#e9f7fa", "#f5f7fe"];
 
   return (
-    <div className="w-10/12 mx-auto mb-18">
+    <div className="mb-18">
       <h3 className="text-3xl lg:text-4xl font-bold mb-8">Clients Feedback</h3>
       <div>
         <Swiper

@@ -1,8 +1,8 @@
 import React, { use } from "react";
 import logoImg from "../assets/book-logo.png";
 import { Link, NavLink } from "react-router";
+import { IoMenu } from "react-icons/io5";
 import { AuthContext } from "../provider/AuthContext";
-import { Tooltip } from "react-tooltip";
 const Navbar = () => {
   const { user, logOutUser, handleTheme } = use(AuthContext);
   const navItems = (
@@ -90,55 +90,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-2 sm:gap-3">
-        <div className="md:flex items-center gap-3">
-          <label className="toggle text-base-content mb-2 md:mb-0">
-            <input
-              onChange={(e) => handleTheme(e.target.checked)}
-              type="checkbox"
-              defaultChecked={localStorage.getItem('theme') === 'dark'}
-              className="theme-controller"
-            />
-
-            <svg
-              aria-label="sun"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2"></path>
-                <path d="M12 20v2"></path>
-                <path d="m4.93 4.93 1.41 1.41"></path>
-                <path d="m17.66 17.66 1.41 1.41"></path>
-                <path d="M2 12h2"></path>
-                <path d="M20 12h2"></path>
-                <path d="m6.34 17.66-1.41 1.41"></path>
-                <path d="m19.07 4.93-1.41 1.41"></path>
-              </g>
-            </svg>
-
-            <svg
-              aria-label="moon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-              </g>
-            </svg>
-          </label>
+        <div className="dropdown dropdown-end">
           <img
             src={
               user
@@ -146,23 +98,71 @@ const Navbar = () => {
                 : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
             }
             alt={user?.displayName}
-            data-tooltip-id="userTooltip"
-            className="w-12 h-12 rounded-full cursor-pointer"
+            className="rounded-full h-9 w-9 cursor-pointer btn m-1 p-0"
+            role="button"
+            tabIndex={0}
           />
-          {user && (
-            <Tooltip
-              id="userTooltip"
-              place="bottom"
-              effect="solid"
-              style={{ zIndex: 9999 }}
-            >
-              <div className="flex flex-col text-left">
-                <span className="font-semibold">{user.displayName}</span>
-                <span className="text-sm">{user.email}</span>
+          <ul
+            tabIndex="-1"
+            className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <div className="text-base">
+                <label className="toggle text-base-content">
+                  <input
+                    type="checkbox"
+                    className="theme-controller"
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                  />
+                  <svg
+                    aria-label="sun"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <path d="M12 2v2"></path>
+                      <path d="M12 20v2"></path>
+                      <path d="m4.93 4.93 1.41 1.41"></path>
+                      <path d="m17.66 17.66 1.41 1.41"></path>
+                      <path d="M2 12h2"></path>
+                      <path d="M20 12h2"></path>
+                      <path d="m6.34 17.66-1.41 1.41"></path>
+                      <path d="m19.07 4.93-1.41 1.41"></path>
+                    </g>
+                  </svg>
+
+                  <svg
+                    aria-label="moon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </g>
+                  </svg>
+                </label>
               </div>
-            </Tooltip>
-          )}
+            </li>
+            <li>
+              <Link className="font-semibold">Dashboard</Link>
+            </li>
+          </ul>
         </div>
+
         <div>
           {user ? (
             <button

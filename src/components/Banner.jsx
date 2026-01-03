@@ -34,7 +34,7 @@ const Banner = () => {
   }, [swiperInstance]);
 
   return (
-    <div className="w-11/12 mb-32 relative rounded-b-lg bg-gray-200 mx-auto min-h-[500px] overflow-hidden">
+    <div className="mb-14 relative rounded-b-lg bg-gray-200 min-h-[500px] overflow-hidden">
       <Swiper
         modules={[Navigation]}
         loop={true}

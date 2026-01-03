@@ -21,7 +21,7 @@ const RecentlyAddedBooks = () => {
   }, [])
 
   return (
-    <div className="w-10/12 mx-auto mb-18">
+    <div className="mb-18">
       <h3 className="text-4xl lg:5xl font-bold mb-5">Recently Added Books</h3>
       <div className="relative min-h-[300px] flex rounded-lg p-3">
         { loading ? <span className="loading loading-bars loading-xl absolute left-1/2 top-30"></span> : latestBooks.length === 0 ? (
