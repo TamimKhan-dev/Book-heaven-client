@@ -71,7 +71,7 @@ const BookCategories = () => {
               } : {}}
             >
               <div className="h-64 sm:h-72 lg:h-80 flex flex-col justify-end p-6 sm:p-8 bg-linear-to-t from-black/20 to-transparent">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 inline-block">
+                <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 inline-block">
                   <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">
                     {category.title}
                   </h2>

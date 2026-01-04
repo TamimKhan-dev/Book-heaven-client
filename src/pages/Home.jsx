@@ -9,6 +9,7 @@ import Discount from '../components/Discount/Discount';
 import Stat from '../components/stat/Stat';
 import JoinOurCommunity from '../components/joinOurCommunity/JoinOurCommunity';
 import BookCategories from '../components/bookCategories/BookCategories';
+import FAQ from '../components/faq/FAQ';
 
 const Home = () => {
 
@@ -23,6 +24,7 @@ const Home = () => {
             <Stat />
             <Discount />
             <BookCategories />
+            <FAQ />
         </Container>
     );
 };
