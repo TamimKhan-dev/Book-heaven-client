@@ -8,6 +8,7 @@ import FeatureHighlight from '../components/featureHighlight/FeatureHighlight';
 import Discount from '../components/Discount/Discount';
 import Stat from '../components/stat/Stat';
 import JoinOurCommunity from '../components/joinOurCommunity/JoinOurCommunity';
+import BookCategories from '../components/bookCategories/BookCategories';
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const Home = () => {
             <JoinOurCommunity />
             <Stat />
             <Discount />
+            <BookCategories />
         </Container>
     );
 };

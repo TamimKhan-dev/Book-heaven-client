@@ -11,7 +11,7 @@ const Discount = () => {
   };
   return (
     <div
-      className="p-4 bg-gray-200 mb-18 min-h-59 rounded-lg flex lg:justify-end bg-no-repeat bg-cover"
+      className="p-4 bg-gray-200 mb-29 min-h-59 rounded-lg flex lg:justify-end bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${discountBanner})` }}
     >
       <div className="w-full lg:w-1/2 text-white p-6 flex flex-col md:flex-row gap-5 justify-between items-center md:justify-around">
