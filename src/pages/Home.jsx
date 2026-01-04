@@ -7,6 +7,7 @@ import Container from '../components/shared/Container';
 import FeatureHighlight from '../components/featureHighlight/FeatureHighlight';
 import Discount from '../components/Discount/Discount';
 import Stat from '../components/stat/Stat';
+import JoinOurCommunity from '../components/joinOurCommunity/JoinOurCommunity';
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
             <RecentlyAddedBooks />
             <ClientFeedback />
             <BooksOfWeek />
+            <JoinOurCommunity />
             <Stat />
             <Discount />
         </Container>
