@@ -6,6 +6,7 @@ import RecentlyAddedBooks from '../components/recentlyAddedBooks/RecentlyAddedBo
 import Container from '../components/shared/Container';
 import FeatureHighlight from '../components/featureHighlight/FeatureHighlight';
 import Discount from '../components/Discount/Discount';
+import Stat from '../components/stat/Stat';
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
             <RecentlyAddedBooks />
             <ClientFeedback />
             <BooksOfWeek />
+            <Stat />
             <Discount />
         </Container>
     );
